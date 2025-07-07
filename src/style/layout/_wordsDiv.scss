@@ -1,0 +1,128 @@
+@use "../abstracts/functions" as f;
+@use "../abstracts/breakpoints" as b;
+@use "../abstracts/mixins" as m;
+
+.wordsDivContainer {
+  --height: 100%;
+  margin-top: var(--wordsDivContainer-m-top-js);
+}
+
+.timer {
+  position: relative;
+  border-radius: var(--general-b-radius) var(--general-b-radius) f.rem(4)
+    f.rem(4);
+  padding: f.rem(8) var(--general-padding);
+  background-color: var(--tertiary);
+  margin-bottom: f.rem(16);
+
+  &::after {
+    $height: 2;
+    content: "";
+    position: absolute;
+    height: f.rem($height);
+    width: 100%;
+    inset: calc(100% - #{f.rem($height)} / 2) 0 0;
+    background-color: var(--secondary);
+    border-radius: 100vmax;
+    animation: var(--timer-animation-name) var(--timer-animation-duration)
+      forwards linear;
+    animation-play-state: var(--timer-animation-play-state);
+  }
+}
+
+.wordsDiv {
+  padding: var(--general-padding);
+  border-radius: var(--general-b-radius);
+  background-color: var(--tertiary);
+}
+
+.words {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: f.rem(105);
+  word-wrap: break-word;
+  line-height: 1.5;
+  // border: 1px solid blue;
+  overflow: hidden;
+  margin-bottom: f.rem(32);
+}
+
+.input-div {
+  display: grid;
+  grid-template-columns: 1fr #{f.rem(75)};
+  height: f.rem(50);
+  gap: f.rem(16);
+
+  @include b.breakpoint(md) {
+    gap: f.rem(32);
+  }
+
+  @include b.breakpoint(sm, max-width) {
+    grid-template-columns: 1fr #{f.rem(64)};
+  }
+
+  > * {
+    border: none;
+    border-radius: var(--general-b-radius);
+    background-color: var(--primary);
+    &:focus {
+      outline-offset: f.rem(2);
+      outline: f.rem(2) solid var(--secondary);
+    }
+  }
+  input {
+    min-width: 0;
+    padding-inline: calc(var(--general-padding) / 2);
+    caret-color: var(--secondary);
+    font-family: var(--secondary-ff);
+  }
+  button {
+    min-width: 0ch;
+
+    svg {
+      @include m.svgIcon();
+    }
+  }
+}
+
+#blockCaret {
+  @include m.caret(1);
+
+  span {
+    visibility: hidden;
+  }
+}
+#thinCaret {
+  @include m.caret(2);
+}
+
+.each-word {
+  display: inline-block;
+  position: relative;
+  /* border: 1px solid red; */
+
+  span {
+    position: relative;
+    /* border: 1px solid pink; */
+  }
+}
+.spaces {
+  visibility: hidden;
+}
+
+// error color of typed letters when caret is thin
+.red {
+  color: black;
+  background-color: var(--error);
+}
+
+// error color of typed letters when caret is block
+.red.blockCaret {
+  color: var(--error);
+  background-color: unset;
+}
+
+.green {
+  color: var(--secondary);
+}

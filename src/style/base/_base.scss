@@ -1,0 +1,72 @@
+@use "../abstracts/functions" as f;
+
+body {
+  color: var(--white);
+  background-color: var(--primary);
+  font-family: var(--primary-ff);
+
+  // To prevent blue flashes when elements clicked on mobile
+  -webkit-tap-highlight-color: transparent;
+
+  &::-webkit-scrollbar {
+    width: f.rem(12);
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 f.rem(5) grey;
+    border-radius: f.rem(10);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--modal-second-color);
+    border-radius: f.rem(10);
+    box-shadow: inset 0 0 f.rem(5) var(--white);
+  }
+}
+::selection {
+  color: var(--primary);
+  background-color: var(--secondary);
+}
+
+#root {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+#root.onlyWords {
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    > section:first-of-type {
+      margin-top: 0;
+    }
+  }
+}
+
+.onlyWords__margin-bottom {
+  margin-bottom: var(--wordsDivContainer-m-top);
+}
+
+.words-font {
+  color: white;
+  font-family: var(--secondary-ff);
+  isolation: isolate;
+}
+
+code {
+  font-size: f.rem(13);
+  padding: f.rem(2) f.rem(6);
+  background-color: var(--modal-second-color);
+  border-radius: f.rem(2);
+}
+
+// For the toastify component
+.toastify-progress-height {
+  height: f.rem(2);
+}
+
+.Toastify__close-button {
+  min-width: unset;
+  min-height: unset;
+}

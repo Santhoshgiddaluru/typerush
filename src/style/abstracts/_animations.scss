@@ -1,0 +1,103 @@
+@use "./functions" as f;
+
+.open {
+  max-height: var(--settings-element-height) !important;
+}
+
+.blink {
+  animation: blink 1.1s infinite 1s linear;
+}
+
+.fade-out {
+  animation: fadeOut 150ms linear forwards !important;
+}
+.wrong-click {
+  animation: wrongClick 200ms;
+}
+
+.hider-active {
+  animation: hiderActive 0.25s linear forwards;
+}
+.hider-passive {
+  animation: hiderPassive 0.25s linear reverse;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes timer-animation-decrement {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+    background-color: var(--error);
+  }
+}
+
+@keyframes timer-animation-increment {
+  from {
+    width: var(--timer-current-width);
+    background-color: var(--timer-current-bg-color);
+  }
+  to {
+    width: 100%;
+    background-color: var(--secondary);
+  }
+}
+
+@keyframes wrongClick {
+  50% {
+    transform: scale(1.01);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes hiderActive {
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes hiderPassive {
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
