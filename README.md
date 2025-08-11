@@ -4,8 +4,6 @@ typerush
 
 <br>
 
-<img src='./public/wpmonster.png' />
-
 A Lightweight Typing website 👹
 
 ## How to run locally
