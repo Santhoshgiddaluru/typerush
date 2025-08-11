@@ -1,9 +1,5 @@
 typerush
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c5dd9d40-b9ee-432b-ab72-ece1068a7409/deploy-status)](https://app.netlify.com/sites/wpmonster/deploys)
-
-<br>
-
 A Lightweight Typing website 👹
 
 ## How to run locally
